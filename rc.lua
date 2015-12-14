@@ -16,7 +16,6 @@ require("debian.menu")
 
 -- Load third-party libraries
 -- Load Vicious widget library
-local vicious = require("vicious")
 local rerodentbane = require("arnelle/rerodentbane")
 
 -- {{{ Error handling
@@ -118,57 +117,15 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- {{{ Wibox
--- Create a textclock widget
--- mytextclock = awful.widget.textclock()
-mytextclock = wibox.widget.textbox()
-vicious.register(mytextclock, vicious.widgets.date, " %a %b %d, %r ", 1)
+local widgetspacerpipe = wibox.widget.textbox()
+widgetspacerpipe:set_text(" | ")
+local widgetspacerspace = wibox.widget.textbox()
+widgetspacerspace:set_text(" ")
 
--- Create battery widget
-batterywidget = wibox.widget.textbox()
-batterywidget:set_text(" Battery | ")
-batterywidgettimer = timer({ timeout = 5 })
-batterywidgettimer:connect_signal("timeout", function()
-    fh = assert(io.popen("acpi | cut -d, -f 2,3 -", "r"))
-    batterywidget:set_text(fh:read("*l") .. " |")
-    fh:close()
-end)
-batterywidgettimer:start()
-
--- Create wifi status widget
-wifiwidget = wibox.widget.textbox()
-wifiwidget:set_text(" Wifi |")
-wifiwidgettimer = timer({ timeout = 2 })
-wifiwidgettimer:connect_signal("timeout", function()
-    local wifistrength = awful.util.pread("awk 'NR==3 {printf \"%.1f%%\",($3/70)*100}' /proc/net/wireless")
-    if wifistrength == "" then
-        wifiwidget:set_text("")
-    else
-        wifiwidget:set_text(" " .. wifistrength .. " |")
-    end
-end)
-wifiwidgettimer:start()
-
--- Create volume widget
-volumewidget = wibox.widget.textbox()
-volumewidget:set_align("right")
-volumewidgettimer = timer({ timeout = 0.2 })
-volumewidgettimer:connect_signal("timeout", function()
-    local fd = io.popen("amixer sget Master")
-    local status = fd:read("*all")
-    fd:close()
-
-    local volume = string.match(status, "(%d?%d?%d)%%")
-    volume = string.format("% 3d", volume)
-    status = string.match(status, "%[(o[^%]])%]")
-
-    if string.find(status, "on", 1, true) then
-        volume = volume .. "% |"
-    else
-        volume = volume .. "M |"
-    end
-    volumewidget:set_text(volume)
-end)
-volumewidgettimer:start()
+local datetimewidget = require("arnelle/widgets/datetime")
+local batterywidget = require("arnelle/widgets/battery")
+local wifiwidget = require("arnelle/widgets/wifi")
+local volumewidget = require("arnelle/widgets/volume")
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -253,7 +210,9 @@ for s = 1, screen.count() do
     right_layout:add(volumewidget)
     right_layout:add(wifiwidget)
     right_layout:add(batterywidget)
-    right_layout:add(mytextclock)
+    right_layout:add(widgetspacerpipe)
+    right_layout:add(datetimewidget)
+    right_layout:add(widgetspacerspace)
     -- right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)
