@@ -17,6 +17,7 @@ require("debian.menu")
 -- Load third-party libraries
 -- Load Vicious widget library
 local vicious = require("vicious")
+local rerodentbane = require("arnelle/rerodentbane")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -128,7 +129,7 @@ batterywidget:set_text(" Battery | ")
 batterywidgettimer = timer({ timeout = 5 })
 batterywidgettimer:connect_signal("timeout", function()
     fh = assert(io.popen("acpi | cut -d, -f 2,3 -", "r"))
-    batterywidget:set_text(" " .. fh:read("*l") .. " |")
+    batterywidget:set_text(fh:read("*l") .. " |")
     fh:close()
 end)
 batterywidgettimer:start()
@@ -146,6 +147,28 @@ wifiwidgettimer:connect_signal("timeout", function()
     end
 end)
 wifiwidgettimer:start()
+
+-- Create volume widget
+volumewidget = wibox.widget.textbox()
+volumewidget:set_align("right")
+volumewidgettimer = timer({ timeout = 0.2 })
+volumewidgettimer:connect_signal("timeout", function()
+    local fd = io.popen("amixer sget Master")
+    local status = fd:read("*all")
+    fd:close()
+
+    local volume = string.match(status, "(%d?%d?%d)%%")
+    volume = string.format("% 3d", volume)
+    status = string.match(status, "%[(o[^%]])%]")
+
+    if string.find(status, "on", 1, true) then
+        volume = volume .. "% |"
+    else
+        volume = volume .. "M |"
+    end
+    volumewidget:set_text(volume)
+end)
+volumewidgettimer:start()
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -227,6 +250,7 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(volumewidget)
     right_layout:add(wifiwidget)
     right_layout:add(batterywidget)
     right_layout:add(mytextclock)
@@ -298,6 +322,9 @@ globalkeys = awful.util.table.join(
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
+    -- Keybinding for xtrlock to lock screen quickly
+    awful.key({ modkey },            "F12",   function () awful.util.spawn("xtrlock")   end),
+
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
 
@@ -306,10 +333,13 @@ globalkeys = awful.util.table.join(
                   awful.prompt.run({ prompt = "Run Lua code: " },
                   mypromptbox[mouse.screen].widget,
                   awful.util.eval, nil,
-                  awful.util.getdir("cache") .. "/history_eval")
+		  awful.util.getdir("cache") .. "/history_eval")
               end),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end)
+    awful.key({ modkey }, "p", function() menubar.show() end),
+
+    -- Keybindings for ReRodentBane
+    awful.key({ "Control" }, "m", rerodentbane)
 )
 
 clientkeys = awful.util.table.join(
