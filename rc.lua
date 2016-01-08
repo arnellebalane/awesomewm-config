@@ -281,8 +281,9 @@ globalkeys = awful.util.table.join(
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
-    -- Keybinding for xtrlock to lock screen quickly
-    awful.key({ modkey },            "F12",   function () awful.util.spawn("xtrlock")   end),
+    -- Keybinding for xlock to lock screen quickly
+    -- Requires xlock and xlockmore-gl to work
+    awful.key({ modkey,           }, "F12",   function () awful.util.spawn("xlock -mode maze -erasedelay 0") end),
 
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
