@@ -294,7 +294,15 @@ globalkeys = awful.util.table.join(
 		  awful.util.getdir("cache") .. "/history_eval")
               end),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end)
+    awful.key({ modkey }, "p", function() menubar.show() end),
+
+    -- Media buttons bindings
+    awful.key({ }, "XF86AudioRaiseVolume",    function () awful.util.spawn("amixer set Master 2+") end),
+    awful.key({ }, "XF86AudioLowerVolume",    function () awful.util.spawn("amixer set Master 2-") end),
+    awful.key({ }, "XF86AudioMute",           function () awful.util.spawn("amixer -D pulse sset Master 1+ toggle") end),
+    awful.key({ }, "XF86AudioPlay",           function () awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") end),
+    awful.key({ }, "XF86AudioNext",           function () awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") end),
+    awful.key({ }, "XF86AudioPrev",           function () awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") end)
 )
 
 clientkeys = awful.util.table.join(
