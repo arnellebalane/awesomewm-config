@@ -14,10 +14,6 @@ local menubar = require("menubar")
 -- Load Debian menu entries
 require("debian.menu")
 
--- Load third-party libraries
--- Load Vicious widget library
-local rerodentbane = require("arnelle/rerodentbane")
-
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -48,7 +44,7 @@ end
 beautiful.init("/home/arnelle/.config/awesome/arnelle/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
+terminal = "terminator"
 editor = "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -72,8 +68,8 @@ local layouts =
 --  awful.layout.suit.spiral,
 --  awful.layout.suit.spiral.dwindle,
 --  awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier
+    awful.layout.suit.magnifier,
+    awful.layout.suit.max.fullscreen
 }
 -- }}}
 
@@ -123,8 +119,6 @@ local widgetspacerspace = wibox.widget.textbox()
 widgetspacerspace:set_text(" ")
 
 local datetimewidget = require("arnelle/widgets/datetime")
-local batterywidget = require("arnelle/widgets/battery")
-local wifiwidget = require("arnelle/widgets/wifi")
 local volumewidget = require("arnelle/widgets/volume")
 
 -- Create a wibox for each screen and add it
@@ -208,8 +202,6 @@ for s = 1, screen.count() do
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(volumewidget)
-    right_layout:add(wifiwidget)
-    right_layout:add(batterywidget)
     right_layout:add(widgetspacerpipe)
     right_layout:add(datetimewidget)
     right_layout:add(widgetspacerspace)
@@ -218,7 +210,7 @@ for s = 1, screen.count() do
     -- Now bring it all together (with the tasklist in the middle)
     local layout = wibox.layout.align.horizontal()
     layout:set_left(left_layout)
-    layout:set_middle(mytasklist[s])
+    -- layout:set_middle(mytasklist[s])
     layout:set_right(right_layout)
 
     mywibox[s]:set_widget(layout)
@@ -238,6 +230,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
+    awful.key({ modkey, "Control" }, "h",      awful.tag.viewprev       ),
+    awful.key({ modkey, "Control" }, "l",      awful.tag.viewnext       ),
 
     awful.key({ modkey,           }, "j",
         function ()
@@ -386,7 +380,8 @@ awful.rules.rules = {
                      focus = awful.client.focus.filter,
                      raise = true,
                      keys = clientkeys,
-                     buttons = clientbuttons } },
+                     buttons = clientbuttons,
+                     size_hints_honor = false } },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
     { rule = { class = "pinentry" },

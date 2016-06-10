@@ -12,9 +12,9 @@ volumewidgettimer:connect_signal("timeout", function()
     status = string.match(status, "%[(o[^%]])%]")
 
     if string.find(status, "on", 1, true) then
-        volume = volume .. "% |"
+        volume = volume .. "%"
     else
-        volume = volume .. "M |"
+        volume = volume .. "M"
     end
     volumewidget:set_text(volume)
 end)
