@@ -118,6 +118,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- {{{ Wibox
 local widgetspacerpipe = wibox.widget.textbox()
 widgetspacerpipe:set_text(" | ")
+widgetspacerpipe:set_valign("bottom")
 local widgetspacerspace = wibox.widget.textbox()
 widgetspacerspace:set_text(" ")
 
@@ -407,9 +408,7 @@ awful.rules.rules = {
     { rule = { class = "google-chrome" },
       properties = { tag = tags[2][1], switchtotag = true } },
     { rule = { class = "HipChat" },
-      properties = { tag = tags[2][2], switchtotag = true }},
-    { rule = { class = "Spotify" },
-      properties = { tag = tags[2][3], switchtotag = true } }
+      properties = { tag = tags[2][2], switchtotag = true }}
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
