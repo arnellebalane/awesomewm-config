@@ -2,7 +2,7 @@ local wibox = require("wibox")
 
 local volumewidget = wibox.widget.textbox()
 local volumewidgettimer = timer({ timeout = 0.2 })
-volumewidgettimer:connect_signal("timeout", function()
+local displayvolume = function()
     local fd = io.popen("amixer sget Master")
     local status = fd:read("*all")
     fd:close()
@@ -15,7 +15,10 @@ volumewidgettimer:connect_signal("timeout", function()
     end
 
     volumewidget:set_text(volume)
-end)
+end
+
+displayvolume()
+volumewidgettimer:connect_signal("timeout", displayvolume)
 volumewidgettimer:start()
 
 return volumewidget
