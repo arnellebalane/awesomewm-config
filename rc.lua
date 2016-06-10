@@ -86,7 +86,7 @@ end
 tags = {}
 -- Each screen has its own tag table.
 tags[1] = awful.tag({ "code", "terminal", 3, 4, 5, 6, 7, 8, 9 }, 1, layouts[1])
-tags[2] = awful.tag({ "browser", "chat", "music", 4, 5, 6, 7, 8, 9 }, 2, layouts[1])
+tags[2] = awful.tag({ "www", "chat", "music", 4, 5, 6, 7, 8, 9 }, 2, layouts[1])
 
 for s = 3, screen.count() do
     tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
@@ -199,7 +199,6 @@ for s = 1, screen.count() do
     local left_layout = wibox.layout.fixed.horizontal()
     -- left_layout:add(mylauncher)
     left_layout:add(mylayoutbox[s])
-    left_layout:add(widgetspacerspace)
     left_layout:add(mytaglist[s])
     left_layout:add(mypromptbox[s])
 
@@ -401,8 +400,16 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "pinentry" },
       properties = { floating = true } },
-    { rule = { class = "gimp" },
-      properties = { floating = true } },
+    { rule = { class = "Atom" },
+      properties = { tag = tags[1][1], switchtotag = true } },
+    { rule = { class = "Terminator" },
+      properties = { tag = tags[1][2], switchtotag = true } },
+    { rule = { class = "google-chrome" },
+      properties = { tag = tags[2][1], switchtotag = true } },
+    { rule = { class = "HipChat" },
+      properties = { tag = tags[2][2], switchtotag = true }},
+    { rule = { class = "Spotify" },
+      properties = { tag = tags[2][3], switchtotag = true } }
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
