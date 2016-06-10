@@ -204,7 +204,10 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
-    if s == 1 then right_layout:add(wibox.widget.systray()) end
+    if s == 1 then
+        right_layout:add(wibox.widget.systray())
+        right_layout:add(widgetspacerspace)
+    end
     right_layout:add(volumewidget)
     right_layout:add(widgetspacerpipe)
     right_layout:add(datetimewidget)
