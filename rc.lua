@@ -123,6 +123,7 @@ widgetspacerspace:set_text(" ")
 
 local datetimewidget = require("arnelle/widgets/datetime")
 local volumewidget = require("arnelle/widgets/volume")
+local ipaddresswidget = require("arnelle/widgets/ipaddress")
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -208,6 +209,8 @@ for s = 1, screen.count() do
         right_layout:add(wibox.widget.systray())
         right_layout:add(widgetspacerspace)
     end
+    right_layout:add(ipaddresswidget)
+    right_layout:add(widgetspacerpipe)
     right_layout:add(volumewidget)
     right_layout:add(widgetspacerpipe)
     right_layout:add(datetimewidget)
