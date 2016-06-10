@@ -41,7 +41,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/home/arnelle/.config/awesome/arnelle/theme.lua")
+beautiful.init("/home/arnelle/.config/awesome/arnelle/theme/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "terminator"
@@ -84,8 +84,11 @@ end
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {}
-for s = 1, screen.count() do
-    -- Each screen has its own tag table.
+-- Each screen has its own tag table.
+tags[1] = awful.tag({ "code", "terminal", 3, 4, 5, 6, 7, 8, 9 }, 1, layouts[1])
+tags[2] = awful.tag({ "browser", "chat", "music", 4, 5, 6, 7, 8, 9 }, 2, layouts[1])
+
+for s = 3, screen.count() do
     tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
 end
 -- }}}
@@ -195,6 +198,7 @@ for s = 1, screen.count() do
     local left_layout = wibox.layout.fixed.horizontal()
     -- left_layout:add(mylauncher)
     left_layout:add(mylayoutbox[s])
+    left_layout:add(widgetspacerspace)
     left_layout:add(mytaglist[s])
     left_layout:add(mypromptbox[s])
 
@@ -290,10 +294,7 @@ globalkeys = awful.util.table.join(
 		  awful.util.getdir("cache") .. "/history_eval")
               end),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end),
-
-    -- Keybindings for ReRodentBane
-    awful.key({ "Control" }, "m", rerodentbane)
+    awful.key({ modkey }, "p", function() menubar.show() end)
 )
 
 clientkeys = awful.util.table.join(

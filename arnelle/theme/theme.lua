@@ -91,7 +91,11 @@ theme.layout_dwindle = "/usr/share/awesome/themes/default/layouts/dwindlew.png"
 
 theme.awesome_icon = "/usr/share/awesome/icons/awesome16.png"
 
--- Define the icon theme for application icons. If not set then the icons 
+-- Custom taglist icons
+theme.taglist_squares_sel = '/home/arnelle/.config/awesome/arnelle/theme/icons/square.png'
+theme.taglist_squares_unsel = '/home/arnelle/.config/awesome/arnelle/theme/icons/square.png'
+
+-- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
 
