@@ -4,7 +4,7 @@
 
 theme = {}
 
-theme.font          = "ubuntu mono 10"
+theme.font          = "terminus 8"
 
 theme.bg_normal     = "#673ab7"
 theme.bg_focus      = "#e91e63"

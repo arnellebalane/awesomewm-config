@@ -118,7 +118,6 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- {{{ Wibox
 local widgetspacerpipe = wibox.widget.textbox()
 widgetspacerpipe:set_text(" | ")
-widgetspacerpipe:set_valign("bottom")
 local widgetspacerspace = wibox.widget.textbox()
 widgetspacerspace:set_text(" ")
 
@@ -287,7 +286,7 @@ globalkeys = awful.util.table.join(
 
     -- Keybinding for xlock to lock screen quickly
     -- Requires xlock and xlockmore-gl to work
-    awful.key({ modkey,           }, "F12",   function () awful.util.spawn("xlock -mode maze -erasedelay 0") end),
+    awful.key({ modkey,           }, "F12",   function () awful.util.spawn("xlock -mode blank") end),
 
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
