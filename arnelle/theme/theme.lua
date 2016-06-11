@@ -105,6 +105,11 @@ theme.volume_off_icon = "/home/arnelle/.config/awesome/arnelle/theme/icons/volum
 theme.ipaddress_color = "#81c784"
 theme.ipaddress_icon = "/home/arnelle/.config/awesome/arnelle/theme/icons/ipaddress.png"
 
+-- datetime widget
+theme.date_color = "#F06292"
+theme.time_color = "#64B5F6"
+theme.datetime_icon = "/home/arnelle/.config/awesome/arnelle/theme/icons/datetime.png"
+
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
