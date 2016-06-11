@@ -24,11 +24,11 @@ local displayvolume = function()
     if status == "off" then
         volumewidget:set_border_color(beautiful.volume_off_color)
         volumewidget:set_color(beautiful.volume_off_color)
-        volumeicon:set_image("/home/arnelle/.config/awesome/arnelle/theme/icons/volume-off.png")
+        volumeicon:set_image(beautiful.volume_off_icon)
     else
         volumewidget:set_border_color(beautiful.volume_on_color)
         volumewidget:set_color(beautiful.volume_on_color)
-        volumeicon:set_image("/home/arnelle/.config/awesome/arnelle/theme/icons/volume-on.png")
+        volumeicon:set_image(beautiful.volume_on_icon)
     end
 
     volumewidget:set_value(volume / 100)
