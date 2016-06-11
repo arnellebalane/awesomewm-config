@@ -101,6 +101,10 @@ theme.volume_off_color = "#e57373"
 theme.volume_on_icon = "/home/arnelle/.config/awesome/arnelle/theme/icons/volume-on.png"
 theme.volume_off_icon = "/home/arnelle/.config/awesome/arnelle/theme/icons/volume-off.png"
 
+-- ipaddress widget
+theme.ipaddress_color = "#81c784"
+theme.ipaddress_icon = "/home/arnelle/.config/awesome/arnelle/theme/icons/ipaddress.png"
+
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
