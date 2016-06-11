@@ -7,7 +7,7 @@ theme = {}
 theme.font          = "terminus 8"
 
 theme.bg_normal     = "#222222"
-theme.bg_focus      = "#263238"
+theme.bg_focus      = "#C51162"
 theme.bg_urgent     = "#f44336"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
@@ -106,8 +106,8 @@ theme.ipaddress_color = "#81c784"
 theme.ipaddress_icon = "/home/arnelle/.config/awesome/arnelle/theme/icons/ipaddress.png"
 
 -- datetime widget
-theme.date_color = "#F06292"
-theme.time_color = "#64B5F6"
+theme.date_color = "#f06292"
+theme.time_color = "#64b5f6"
 theme.datetime_icon = "/home/arnelle/.config/awesome/arnelle/theme/icons/datetime.png"
 
 -- Define the icon theme for application icons. If not set then the icons
