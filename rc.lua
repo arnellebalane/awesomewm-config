@@ -44,6 +44,8 @@ beautiful.init("/home/arnelle/.config/awesome/arnelle/theme/theme.lua")
 -- let gears module handle displaying of the wallpapers
 if beautiful.wallpaper then
     gears.wallpaper.maximized(beautiful.wallpaper, nil, true)
+else
+    gears.wallpaper.set("#263238")
 end
 
 
@@ -127,7 +129,9 @@ local volumewidget = require("arnelle/widgets/volume")
 local ipaddresswidget = require("arnelle/widgets/ipaddress")
 
 local widgetspacer = wibox.widget.textbox()
-widgetspacer:set_text("   ")
+widgetspacer:set_text(" ")
+local widgetspacerwide = wibox.widget.textbox()
+widgetspacerwide:set_text("   ")
 
 
 
@@ -152,10 +156,11 @@ for s = 1, screen.count() do
 
     local rightwidgets = wibox.layout.fixed.horizontal()
     rightwidgets:add(ipaddresswidget)
-    rightwidgets:add(widgetspacer)
+    rightwidgets:add(widgetspacerwide)
     rightwidgets:add(volumewidget)
-    rightwidgets:add(widgetspacer)
+    rightwidgets:add(widgetspacerwide)
     rightwidgets:add(datetimewidget)
+    rightwidgets:add(widgetspacer)
 
     local layout = wibox.layout.align.horizontal()
     layout:set_left(leftwidgets)
