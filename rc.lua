@@ -71,8 +71,7 @@ local layouts = {
     awful.layout.suit.max.fullscreen
 }
 
-local layoutboxes = {}
-layoutboxes.buttons = awful.util.table.join(
+local layoutbuttons = awful.util.table.join(
     awful.button({ }, 1, function() awful.layout.inc(layouts, 1) end),
     awful.button({ }, 3, function() awful.layout.inc(layouts, -1) end),
     awful.button({ }, 4, function() awful.layout.inc(layouts, -1) end),
@@ -88,8 +87,7 @@ for s = 3, screen.count() do
     tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
 end
 
-local taglists = {}
-taglists.buttons = awful.util.table.join(
+local tagbuttons = awful.util.table.join(
     awful.button({ }, 1, awful.tag.viewonly),
     awful.button({ modkey }, 1, function(t)
         awful.client.movetotag(t)
@@ -135,12 +133,14 @@ widgetspacer:set_text("   ")
 
 -- # wibox
 local wiboxes = {}
+local layoutboxes = {}
+local taglists = {}
 local promptboxes = {}
 
 for s = 1, screen.count() do
     layoutboxes[s] = awful.widget.layoutbox(s)
-    layoutboxes[s]:buttons(layoutboxes.buttons)
-    taglists[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglists.buttons)
+    layoutboxes[s]:buttons(layoutbuttons)
+    taglists[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, tagbuttons)
     promptboxes[s] = awful.widget.prompt({ prompt = "run: " })
 
     wiboxes[s] = awful.wibox({ position = "top", screen = s })
