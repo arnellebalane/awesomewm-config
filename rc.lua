@@ -152,6 +152,7 @@ for s = 1, screen.count() do
     local leftwidgets = wibox.layout.fixed.horizontal()
     leftwidgets:add(layoutboxes[s])
     leftwidgets:add(taglists[s])
+    leftwidgets:add(widgetspacer)
     leftwidgets:add(promptboxes[s])
 
     local rightwidgets = wibox.layout.fixed.horizontal()
