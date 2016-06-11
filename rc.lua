@@ -147,7 +147,7 @@ for s = 1, screen.count() do
     taglists[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, tagbuttons)
     promptboxes[s] = awful.widget.prompt({ prompt = "run: " })
 
-    wiboxes[s] = awful.wibox({ position = "top", screen = s })
+    wiboxes[s] = awful.wibox({ position = "bottom", screen = s })
 
     local leftwidgets = wibox.layout.fixed.horizontal()
     leftwidgets:add(layoutboxes[s])
