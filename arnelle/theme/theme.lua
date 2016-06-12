@@ -110,6 +110,10 @@ theme.date_color = "#f06292"
 theme.time_color = "#64b5f6"
 theme.datetime_icon = "/home/arnelle/.config/awesome/arnelle/theme/icons/datetime.png"
 
+-- song widget
+theme.song_color = "#fff59d"
+theme.song_icon = "/home/arnelle/.config/awesome/arnelle/theme/icons/song.png"
+
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
