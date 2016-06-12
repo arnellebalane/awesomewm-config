@@ -44,10 +44,10 @@ local songlayout = wibox.layout.fixed.horizontal()
 songlayout:add(marginedsongicon)
 songlayout:add(songwidget)
 
-function signalcallback()
-    awful.client.run_or_raise("spotify", function() return false end)
-    songlayout:disconnect_signal("button::press", signalcallback)
-end
-songlayout:connect_signal("button::press", signalcallback)
+songlayout:connect_signal("button::press", function()
+    awful.client.run_or_raise("spotify", function(c)
+        return awful.rules.match(c, { class = "Spotify" })
+    end)
+end)
 
 return songlayout
