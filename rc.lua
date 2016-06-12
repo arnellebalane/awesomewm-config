@@ -230,7 +230,9 @@ local globalkeys = awful.util.table.join(
             client.focus:raise()
         end
     end),
-    awful.key({ modkey }, "Tab", awful.client.focus.history.previous),
+    awful.key({ modkey, "Shift" }, "j",   function() awful.client.swap.byidx(1) end),
+    awful.key({ modkey, "Shift" }, "k",   function() awful.client.swap.byidx(-1) end),
+    awful.key({ modkey          }, "Tab", awful.client.focus.history.previous),
 
     -- layouts
     awful.key({ modkey            }, "space", function() awful.layout.inc(layouts, 1) end),
