@@ -91,7 +91,7 @@ end
 
 local tagbuttons = awful.util.table.join(
     awful.button({ }, 1, awful.tag.viewonly),
-    awful.button({ modkey }, 1, function(t)
+    awful.button({ modkey, "Shift" }, 1, function(t)
         awful.client.movetotag(t)
         awful.tag.viewonly(t)
     end),
@@ -115,6 +115,17 @@ for i = 1, 9 do
                 local tag = awful.tag.gettags(client.focus.screen)[i]
                 if tag then
                     awful.client.movetotag(tag)
+                    awful.tag.viewonly(tag)
+                end
+            end
+        end),
+        awful.key({ modkey, "Mod1" }, "#" .. i + 9, function()
+            if client.focus then
+                local c = client.focus
+                awful.screen.focus_relative(1)
+                local tag = awful.tag.gettags(mouse.screen)[i]
+                if tag then
+                    awful.client.movetotag(tag, c)
                     awful.tag.viewonly(tag)
                 end
             end
