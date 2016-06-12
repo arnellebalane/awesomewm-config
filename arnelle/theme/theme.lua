@@ -111,7 +111,7 @@ theme.taglist_squares_sel = "/home/arnelle/.config/awesome/arnelle/theme/icons/s
 theme.taglist_squares_unsel = "/home/arnelle/.config/awesome/arnelle/theme/icons/square.png"
 
 theme.naughty_fg = "#222222"
-theme.naughty_bg = "#ffff8d"
+theme.naughty_bg = "#FFF9C4"
 
 
 -- Custom-defined variables
