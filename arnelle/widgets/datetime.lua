@@ -28,7 +28,7 @@ datetimeicon:set_image(beautiful.datetime_icon)
 local margineddatetimeicon = wibox.layout.margin(datetimeicon, 0, 5, 4, 5)
 
 local widgetspacer = wibox.widget.textbox()
-widgetspacer:set_text(" ")
+widgetspacer:set_text("   ")
 
 local datetimelayout = wibox.layout.fixed.horizontal()
 datetimelayout:add(margineddatetimeicon)
