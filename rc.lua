@@ -238,7 +238,7 @@ local globalkeys = awful.util.table.join(
     awful.key({ modkey            }, "Return", function() awful.util.spawn(terminal) end),
 
     -- screenlock (requires xlock)
-    awful.key({ modkey }, "f12", function() awful.util.spawn("xlock -mode blank") end),
+    awful.key({ modkey }, "F12", function() awful.util.spawn("xlock -mode blank") end),
 
     -- media keys
     awful.key({ }, "XF86AudioRaiseVolume", function() awful.util.spawn("amixer set Master 2+") end),
