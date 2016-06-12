@@ -254,6 +254,16 @@ local globalkeys = awful.util.table.join(
     -- screenlock (requires xlock)
     awful.key({ modkey }, "F12", function() awful.util.spawn("xlock -mode blank") end),
 
+    -- screenshot (requires scrot)
+    awful.key({ },         "Print", function()
+        local outputpath = "/home/arnelle/Desktop/" .. os.date("%Y-%m-%d-%H%M%S") .. ".jpg"
+        awful.util.spawn_with_shell("sleep 0.5 && scrot " .. outputpath)
+    end),
+    awful.key({ "Shift" }, "Print", function()
+        local outputpath = "/home/arnelle/Desktop/" .. os.date("%Y-%m-%d-%H%M%S") .. ".jpg"
+        awful.util.spawn_with_shell("sleep 0.5 && scrot -s " .. outputpath)
+    end),
+
     -- media keys
     awful.key({ }, "XF86AudioRaiseVolume", function() awful.util.spawn("amixer set Master 2+") end),
     awful.key({ }, "XF86AudioLowerVolume", function() awful.util.spawn("amixer set Master 2-") end),
