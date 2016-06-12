@@ -1,4 +1,5 @@
 local wibox = require("wibox")
+local awful = require("awful")
 local beautiful = require("beautiful")
 
 local SP_DEST = "org.mpris.MediaPlayer2.spotify"
@@ -16,9 +17,8 @@ local command = "dbus-send --print-reply --dest=" .. SP_DEST .. " " .. SP_PATH .
     .. " | sed -E 's/ +/ /g'"
 
 local songwidget = wibox.widget.textbox()
-
 local songwidgettimer = timer({ timer = 1 })
-songwidgettimer:connect_signal("timeout", function()
+function displaysong()
     local fd = io.popen(command)
     local output = fd:read("*all")
     fd:close()
@@ -28,7 +28,10 @@ songwidgettimer:connect_signal("timeout", function()
         title = "Open Spotify"
     end
     songwidget:set_markup("<span fgcolor='" .. beautiful.song_color .. "'>" .. title .. "</span>")
-end)
+end
+
+displaysong()
+songwidgettimer:connect_signal("timeout", displaysong)
 songwidgettimer:start()
 
 
@@ -40,5 +43,11 @@ local marginedsongicon = wibox.layout.margin(songicon, 0, 5, 5, 5)
 local songlayout = wibox.layout.fixed.horizontal()
 songlayout:add(marginedsongicon)
 songlayout:add(songwidget)
+
+function signalcallback()
+    awful.client.run_or_raise("spotify", function() return false end)
+    songlayout:disconnect_signal("button::press", signalcallback)
+end
+songlayout:connect_signal("button::press", signalcallback)
 
 return songlayout
