@@ -89,6 +89,14 @@ theme.layout_dwindle = "/usr/share/awesome/themes/default/layouts/dwindlew.png"
 
 theme.awesome_icon = "/usr/share/awesome/icons/awesome16.png"
 
+-- Define the icon theme for application icons. If not set then the icons
+-- from /usr/share/icons and /usr/share/icons/hicolor will be used.
+theme.icon_theme = nil
+
+
+
+-- Start of customizations --
+
 -- Override layout icons
 theme.layout_tile = "/home/arnelle/.config/awesome/arnelle/theme/icons/layout-tile.png"
 theme.layout_tileleft = "/home/arnelle/.config/awesome/arnelle/theme/icons/layout-tileleft.png"
@@ -98,9 +106,13 @@ theme.layout_magnifier = "/home/arnelle/.config/awesome/arnelle/theme/icons/layo
 theme.layout_fullscreen = "/home/arnelle/.config/awesome/arnelle/theme/icons/layout-fullscreen.png"
 theme.layout_floating  = "/home/arnelle/.config/awesome/arnelle/theme/icons/layout-floating.png"
 
--- Custom taglist icons
+-- Override taglist icons
 theme.taglist_squares_sel = "/home/arnelle/.config/awesome/arnelle/theme/icons/square.png"
 theme.taglist_squares_unsel = "/home/arnelle/.config/awesome/arnelle/theme/icons/square.png"
+
+theme.naughty_fg = "#222222"
+theme.naughty_bg = "#ffff8d"
+
 
 -- Custom-defined variables
 
@@ -123,9 +135,7 @@ theme.datetime_icon = "/home/arnelle/.config/awesome/arnelle/theme/icons/datetim
 theme.song_color = "#fff59d"
 theme.song_icon = "/home/arnelle/.config/awesome/arnelle/theme/icons/song.png"
 
--- Define the icon theme for application icons. If not set then the icons
--- from /usr/share/icons and /usr/share/icons/hicolor will be used.
-theme.icon_theme = nil
+
 
 return theme
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80

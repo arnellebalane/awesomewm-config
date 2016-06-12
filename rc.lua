@@ -63,6 +63,16 @@ menubar.utils.terminal = terminal
 
 
 
+-- # notifications
+naughty.config.defaults.position = "top_right"
+naughty.config.defaults.margin = 10
+naughty.config.defaults.fg = beautiful.naughty_fg or beautiful.fg_focus
+naughty.config.defaults.bg = beautiful.naughty_bg or beautiful.bg_focus
+naughty.config.defaults.border_width = 0
+naughty.config.defaults.timeout = 5
+
+
+
 -- # layouts
 local layouts = {
     awful.layout.suit.tile,
