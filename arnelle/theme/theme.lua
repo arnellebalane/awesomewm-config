@@ -89,6 +89,15 @@ theme.layout_dwindle = "/usr/share/awesome/themes/default/layouts/dwindlew.png"
 
 theme.awesome_icon = "/usr/share/awesome/icons/awesome16.png"
 
+-- Override layout icons
+theme.layout_tile = "/home/arnelle/.config/awesome/arnelle/theme/icons/layout-tile.png"
+theme.layout_tileleft = "/home/arnelle/.config/awesome/arnelle/theme/icons/layout-tileleft.png"
+theme.layout_tiletop = "/home/arnelle/.config/awesome/arnelle/theme/icons/layout-tiletop.png"
+theme.layout_tilebottom = "/home/arnelle/.config/awesome/arnelle/theme/icons/layout-tilebottom.png"
+theme.layout_magnifier = "/home/arnelle/.config/awesome/arnelle/theme/icons/layout-magnifier.png"
+theme.layout_fullscreen = "/home/arnelle/.config/awesome/arnelle/theme/icons/layout-fullscreen.png"
+theme.layout_floating  = "/home/arnelle/.config/awesome/arnelle/theme/icons/layout-floating.png"
+
 -- Custom taglist icons
 theme.taglist_squares_sel = "/home/arnelle/.config/awesome/arnelle/theme/icons/square.png"
 theme.taglist_squares_unsel = "/home/arnelle/.config/awesome/arnelle/theme/icons/square.png"
