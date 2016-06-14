@@ -298,7 +298,7 @@ awful.rules.rules = {
         rule = { },
         properties = {
             border_width = beautiful.border_width,
-            border_color = beautiful.border_color,
+            border_color = beautiful.border_normal,
             focus = awful.client.focus.filter,
             raise = true,
             keys = clientkeys,
@@ -342,3 +342,6 @@ client.connect_signal("manage", function(c, startup)
         end
     end)
 end)
+
+client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
+client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
