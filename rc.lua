@@ -80,6 +80,7 @@ local layouts = {
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
     awful.layout.suit.magnifier,
+    awful.layout.suit.floating,
     awful.layout.suit.max.fullscreen
 }
 
@@ -207,7 +208,10 @@ local clientkeys = awful.util.table.join(
     end))
 
 local clientbuttons = awful.util.table.join(
-    awful.button({ },        1, function(c) client.focus = c end),
+    awful.button({ },        1, function(c)
+        client.focus = c
+        c:raise()
+    end),
     awful.button({ modkey }, 1, awful.mouse.client.move),
     awful.button({ modkey }, 3, awful.mouse.client.resize))
 
@@ -334,6 +338,7 @@ client.connect_signal("manage", function(c, startup)
         if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
         and awful.client.focus.filter(c) then
             client.focus = c
+            c:raise()
         end
     end)
 end)
