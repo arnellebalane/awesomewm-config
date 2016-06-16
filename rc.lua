@@ -215,6 +215,8 @@ local clientbuttons = awful.util.table.join(
     awful.button({ modkey }, 1, awful.mouse.client.move),
     awful.button({ modkey }, 3, awful.mouse.client.resize))
 
+highlight_focus = false
+
 
 
 -- # keybindings
@@ -288,7 +290,10 @@ local globalkeys = awful.util.table.join(
     awful.key({ }, "XF86AudioMute", function() awful.util.spawn("amixer -D pulse sset Master 1+ toggle") end),
     awful.key({ }, "XF86AudioPlay", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") end),
     awful.key({ }, "XF86AudioNext", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") end),
-    awful.key({ }, "XF86AudioPrev", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") end))
+    awful.key({ }, "XF86AudioPrev", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") end),
+
+    -- toggle highlighting current client
+    awful.key({ modkey }, "F1", function() highlight_focus = not highlight_focus end))
 
 root.keys(globalkeys)
 
@@ -320,7 +325,12 @@ awful.rules.rules = {
     },
     {
         rule = { class = "URxvt" },
-        properties = { tag = tags[1][2], switchtotag = true }
+        properties = {
+            tag = tags[1][2],
+            switchtotag = true,
+            border_width = 1,
+            border_color = beautiful.border_normal
+        }
     },
     {
         rule = { class = "google-chrome" },
@@ -349,5 +359,7 @@ client.connect_signal("manage", function(c, startup)
     end)
 end)
 
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
+client.connect_signal("focus", function(c)
+    if highlight_focus then c.border_color = beautiful.border_focus end
+end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
