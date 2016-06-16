@@ -51,7 +51,7 @@ end
 
 
 -- # variables
-local terminal = "terminator"
+local terminal = "urxvt"
 
 -- usually, Mod4 is the key with a logo between Control and Alt.
 local modkey = "Mod4"
@@ -316,6 +316,10 @@ awful.rules.rules = {
     },
     {
         rule = { class = "Terminator" },
+        properties = { tag = tags[1][2], switchtotag = true }
+    },
+    {
+        rule = { class = "URxvt" },
         properties = { tag = tags[1][2], switchtotag = true }
     },
     {
