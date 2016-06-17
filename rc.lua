@@ -293,7 +293,16 @@ local globalkeys = awful.util.table.join(
     awful.key({ }, "XF86AudioPrev", function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") end),
 
     -- toggle highlighting current client
-    awful.key({ modkey }, "F1", function() highlight_focus = not highlight_focus end))
+    awful.key({ modkey }, "F1", function()
+        highlight_focus = not highlight_focus
+        if client.focus then
+            if highlight_focus then
+                client.focus.border_color = beautiful.border_focus
+            else
+                client.focus.border_color = beautiful.border_normal
+            end
+        end
+    end))
 
 root.keys(globalkeys)
 
