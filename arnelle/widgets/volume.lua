@@ -12,7 +12,7 @@ volumewidget:set_background_color(beautiful.bg_normal)
 
 local volumewidgettimer = timer({ timeout = 0.2 })
 local displayvolume = function()
-    local fd = io.popen("amixer sget Master")
+    local fd = io.popen("amixer -D pulse sget Master")
     local status = fd:read("*all")
     fd:close()
 
