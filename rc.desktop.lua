@@ -271,16 +271,16 @@ local globalkeys = awful.util.table.join(
     awful.key({ modkey            }, "u",      awful.client.urgent.jumpto),
     awful.key({ modkey            }, "Return", function() awful.util.spawn(terminal) end),
 
-    -- screenlock (requires xlock)
-    awful.key({ modkey }, "F12", function() awful.util.spawn("xlock -mode blank") end),
+    -- screenlock (requires xtrlock)
+    awful.key({ modkey }, "F12", function() awful.util.spawn("xtrlock") end),
 
     -- screenshot (requires scrot)
     awful.key({ },         "Print", function()
-        local outputpath = "/home/arnelle/Desktop/" .. os.date("%Y-%m-%d-%H%M%S") .. ".jpg"
+        local outputpath = "/home/arnelle/Pictures/screenshots/" .. os.date("%Y-%m-%d-%H%M%S") .. ".jpg"
         awful.util.spawn_with_shell("sleep 0.5 && scrot " .. outputpath)
     end),
     awful.key({ "Shift" }, "Print", function()
-        local outputpath = "/home/arnelle/Desktop/" .. os.date("%Y-%m-%d-%H%M%S") .. ".jpg"
+        local outputpath = "/home/arnelle/Pictures/screenshots/" .. os.date("%Y-%m-%d-%H%M%S") .. ".jpg"
         awful.util.spawn_with_shell("sleep 0.5 && scrot -s " .. outputpath)
     end),
 
