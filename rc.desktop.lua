@@ -150,6 +150,7 @@ local datetimewidget = require("arnelle/widgets/datetime")
 local volumewidget = require("arnelle/widgets/volume")
 local ipaddresswidget = require("arnelle/widgets/ipaddress")
 local songwidget = require("arnelle/widgets/song")
+local shutdownwidget = require("arnelle/widgets/shutdown")
 
 local widgetspacer = wibox.widget.textbox()
 widgetspacer:set_text(" ")
@@ -186,7 +187,8 @@ for s = 1, screen.count() do
     rightwidgets:add(ipaddresswidget)
     rightwidgets:add(widgetspacerwide)
     rightwidgets:add(datetimewidget)
-    rightwidgets:add(widgetspacer)
+    rightwidgets:add(widgetspacerwide)
+    rightwidgets:add(shutdownwidget)
 
     local layout = wibox.layout.align.horizontal()
     layout:set_left(leftwidgets)

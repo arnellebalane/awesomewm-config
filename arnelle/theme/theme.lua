@@ -135,6 +135,8 @@ theme.datetime_icon = "/home/arnelle/.config/awesome/arnelle/theme/icons/datetim
 theme.song_color = "#fff59d"
 theme.song_icon = "/home/arnelle/.config/awesome/arnelle/theme/icons/song.png"
 
+-- shutdown widget
+theme.shutdown_icon = "/home/arnelle/.config/awesome/arnelle/theme/icons/shutdown.png"
 
 
 return theme

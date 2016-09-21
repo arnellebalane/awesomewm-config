@@ -1,7 +1,7 @@
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
-local fd = io.popen("ifconfig wlan0")
+local fd = io.popen("ifconfig eth0")
 local output = fd:read("*all")
 fd:close()
 
