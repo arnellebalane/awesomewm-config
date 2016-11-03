@@ -11,7 +11,7 @@ shutdownicon:set_image(beautiful.shutdown_icon)
 local shutdowntimer = timer({ timeout = 1 })
 shutdowntimer:connect_signal("timeout", function()
     shutdowntimer:stop()
-    awful.util.spawn("sudo shutdown -P now'")
+    awful.util.spawn_with_shell("sudo shutdown -P now")
 end)
 
 shutdownicon:buttons(awful.util.table.join(
