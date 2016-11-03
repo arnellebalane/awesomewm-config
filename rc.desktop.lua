@@ -51,7 +51,7 @@ end
 
 
 -- # variables
-local terminal = "urxvt"
+local terminal = "hyper"
 
 -- usually, Mod4 is the key with a logo between Control and Alt.
 local modkey = "Mod4"
@@ -344,8 +344,12 @@ awful.rules.rules = {
         }
     },
     {
-        rule = { class = "google-chrome" },
+        rule = { class = "Google-chrome" },
         properties = { tag = tags[2][1], switchtotag = true }
+    },
+    {
+        rule = { class = "Hyper" },
+        properties = { tag = tags[1][2], switchtotag = true }
     },
     {
         rule = { class = "HipChat" },
