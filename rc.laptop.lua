@@ -51,7 +51,7 @@ end
 
 
 -- # variables
-local terminal = "urxvt"
+local terminal = "/home/arnelle/bin/hyper"
 
 -- usually, Mod4 is the key with a logo between Control and Alt.
 local modkey = "Mod4"
