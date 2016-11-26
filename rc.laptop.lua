@@ -344,7 +344,11 @@ awful.rules.rules = {
         }
     },
     {
-        rule = { class = "google-chrome" },
+        rule = { class = "Hyper" },
+        properties = { tag = tags[1][1], switchtotag = true }
+    },
+    {
+        rule = { class = "Google-chrome" },
         properties = { tag = tags[1][3], switchtotag = true }
     },
     {
