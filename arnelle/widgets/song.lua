@@ -5,7 +5,7 @@ local beautiful = require("beautiful")
 local SP_DEST = "org.mpris.MediaPlayer2.spotify"
 local SP_PATH = "/org/mpris/MediaPlayer2"
 local SP_MEMB = "org.mpris.MediaPlayer2.Player"
-local command = "dbus-send --print-reply --dest=" .. SP_DEST .. " " .. SP_PATH .. " org.freedesktop.DBus.Properties.Get string:'" .. SP_MEMB .. "' string:'Metadata'"
+local command = "dbus-send --print-reply --session --dest=" .. SP_DEST .. " " .. SP_PATH .. " org.freedesktop.DBus.Properties.Get string:'" .. SP_MEMB .. "' string:'Metadata'"
     .. " | grep -Ev '^method'"
     .. " | grep -Eo '(\"(.*)\")|(\\b[0-9][a-zA-Z0-9.]*\\b)'"
     .. " | sed -E '2~2 a|'"
