@@ -51,7 +51,7 @@ end
 
 
 -- # variables
-local terminal = "urxvt"
+local terminal = "/home/arnelle/bin/hyper"
 
 -- usually, Mod4 is the key with a logo between Control and Alt.
 local modkey = "Mod4"
@@ -94,7 +94,7 @@ local layoutbuttons = awful.util.table.join(
 
 -- # tags
 tags = {}
-tags[1] = awful.tag({ "code", "terminal", "www", "music", "files" }, 1, layouts[1])
+tags[1] = awful.tag({ "terminal", "code", "www", "music", "files" }, 1, layouts[1])
 for s = 2, screen.count() do
     tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
 end
@@ -328,23 +328,27 @@ awful.rules.rules = {
     },
     {
         rule = { class = "Atom" },
-        properties = { tag = tags[1][1], switchtotag = true }
+        properties = { tag = tags[1][2], switchtotag = true }
     },
     {
         rule = { class = "Terminator" },
-        properties = { tag = tags[1][2], switchtotag = true }
+        properties = { tag = tags[1][1], switchtotag = true }
     },
     {
         rule = { class = "URxvt" },
         properties = {
-            tag = tags[1][2],
+            tag = tags[1][1],
             switchtotag = true,
             border_width = 1,
             border_color = beautiful.border_normal
         }
     },
     {
-        rule = { class = "google-chrome" },
+        rule = { class = "Hyper" },
+        properties = { tag = tags[1][1], switchtotag = true }
+    },
+    {
+        rule = { class = "Google-chrome" },
         properties = { tag = tags[1][3], switchtotag = true }
     },
     {
