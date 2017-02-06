@@ -23,7 +23,7 @@ function displaysong()
     local output = fd:read("*all")
     fd:close()
 
-    local title = string.match(output, "title:(.*)%strackNumber")
+    local title = string.match(output, "title:(.*)%strackNumber"):gsub('&', 'and')
     if not title then
         title = "Open Spotify"
     end
