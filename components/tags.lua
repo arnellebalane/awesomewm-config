@@ -1,6 +1,8 @@
 -- Tags Component
 
 local awful   = require("awful")
+local wibox   = require("wibox")
+local gears   = require("gears")
 local config  = require("components/config")
 local layouts = require("components/layouts")
 
@@ -51,6 +53,12 @@ for i = 1, 5 do
                 end
             end
         end))
+end
+
+
+tags.widget = function(s)
+    local taglist_filter = awful.widget.taglist.filter.all
+    return awful.widget.taglist(s, taglist_filter, tags.button)
 end
 
 

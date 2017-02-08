@@ -12,15 +12,18 @@ awful.screen.connect_for_each_screen(function(s)
     s.layoutbox = awful.widget.layoutbox(s)
     s.layoutbox:buttons(layouts.buttons)
 
-    s.taglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, tags.buttons)
-
-    s.wibox = awful.wibar({ position = "bottom", screen = s })
+    s.wibox = awful.wibar({
+        screen   = s,
+        position = "bottom",
+        height   = 22,
+        ontop    = true
+    })
     s.wibox:setup({
         layout = wibox.layout.align.horizontal,
         {
             layout = wibox.layout.fixed.horizontal,
             s.layoutbox,
-            s.taglist,
+            tags.widget(s),
             s.promptbox,
         },
     })
