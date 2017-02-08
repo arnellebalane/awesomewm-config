@@ -1,10 +1,10 @@
-local gears = require("gears")
-local awful = require("awful")
-require("awful.autofocus")
-local wibox = require("wibox")
+local gears     = require("gears")
+local awful     = require("awful")
+                  require("awful.autofocus")
+local wibox     = require("wibox")
 local beautiful = require("beautiful")
-local naughty = require("naughty")
-local menubar = require("menubar")
+local naughty   = require("naughty")
+local menubar   = require("menubar")
 
 
 
@@ -14,8 +14,8 @@ local menubar = require("menubar")
 if awesome.startup_errors then
     naughty.notify({
         preset = naughty.config.presets.critical,
-        title = "Oops, there were errors during startup!",
-        text = awesome.startup_errors
+        title  = "Oops, there were errors during startup!",
+        text   = awesome.startup_errors
     })
 end
 
@@ -28,8 +28,8 @@ do
 
         naughty.notify({
             preset = naughty.config.presets.critical,
-            title = "Oops, an error happened!",
-            text = tostring(err)
+            title  = "Oops, an error happened!",
+            text   = tostring(err)
         })
         in_error = false
     end)
@@ -37,21 +37,30 @@ end
 
 
 
+-- # variable declarations
+local terminal = "terminator"
+local modkey = "Mod4"
+local altkey = "Mod1"
+
+
+
 -- # theme
 beautiful.init("/home/arnelle/.config/awesome/arnelle/theme/theme.lua")
 
 -- let gears module handle displaying the wallpaper
-if beautiful.wallpaper then
-    gears.wallpaper.maximized(beautiful.wallpaper, nil, true)
-else
-    gears.wallpaper.set("#263238")
+function reset_wallpaper(s)
+    if beautiful.wallpaper then
+        local wallpaper = beautiful.wallpaper;
+        if type(wallpaper) == "function" then
+            wallpaper = wallpaper(s)
+        end
+        gears.wallpaper.maximized(wallpaper, s, true)
+    else
+        gears.wallpaper.set("#263238")
+    end
 end
 
-
-
--- # variable declarations
-local terminal = "terminator"
-local modkey = "Mod4" -- usually the key between Ctrl and Alt
+screen.connect_signal("property::geometry", reset_wallpaper)
 
 
 
@@ -61,34 +70,23 @@ menubar.utils.terminal = terminal
 
 
 -- # notifications
-naughty.config.defaults.position = "top_right"
-naughty.config.defaults.margin = 10
-naughty.config.defaults.fg = beautiful.naughty_fg or beautiful.fg_focus
-naughty.config.defaults.bg = beautiful.naughty_bg or beautiful.bg_focus
+naughty.config.defaults.position     = "top_right"
+naughty.config.defaults.margin       = 10
+naughty.config.defaults.fg           = beautiful.naughty_fg or beautiful.fg_focus
+naughty.config.defaults.bg           = beautiful.naughty_bg or beautiful.bg_focus
 naughty.config.defaults.border_width = 0
-naughty.config.defaults.timeout = 5
-naughty.config.defaults.icon_size = 35
+naughty.config.defaults.timeout      = 5
+naughty.config.defaults.icon_size    = 35
 
 
 
 -- # layouts
 local layouts = {
-    awful.layout.suit.floating,
     awful.layout.suit.tile,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier,
-    awful.layout.suit.corner.nw,
-    awful.layout.suit.corner.ne,
-    awful.layout.suit.corner.sw,
-    awful.layout.suit.corner.se,
+    awful.layout.suit.floating,
 }
 
 local layoutbuttons = awful.util.table.join(
@@ -100,11 +98,8 @@ local layoutbuttons = awful.util.table.join(
 
 
 -- # tags
-awful.tag({ "code", "terminal", 3, 4, 5, 6, 7, 8, 9 }, 1, layouts[1])
-awful.tag({ "www", "chat", "music", "files", 5, 6, 7, 8, 9 }, 2, layouts[1])
-for s = 3, screen:count() do
-    awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
-end
+awful.tag({ "code", "terminal" }, 1, layouts[1])
+awful.tag({ "www", "chat", "music", "files" }, 2, layouts[1])
 
 local tagbuttons = awful.util.table.join(
     awful.button({ }, 1, function(t) t:view_only() end),
@@ -177,11 +172,11 @@ local clientbuttons = awful.util.table.join(
 local clientkeys = awful.util.table.join(
     awful.key({ modkey }, "f", function(c) c.fullscreen = not c.fullscreen end),
     awful.key({ modkey }, "q", function(c) c:kill() end),
-    awful.key({ modkey }, "o", awful.client.movetoscreen),
+    awful.key({ modkey }, "o", function(c) c:move_to_screen() end),
     awful.key({ modkey }, "n", function(c) c.minimized = true end),
     awful.key({ modkey }, "m", function(c)
-        c.maximized_horizontal = not c.maximimzed_horizontal
-        c.maximized_vertical = not c.maximized_vertical
+        c.maximized_horizontal = not c.maximized_horizontal
+        c.maximized_vertical   = not c.maximized_vertical
     end))
 
 
@@ -215,8 +210,9 @@ local globalkeys = awful.util.table.join(
             client.focus:raise()
         end
     end),
-    awful.key({ modkey, "Shift" }, "j", function() awful.client.swap.byidx(1) end),
-    awful.key({ modkey, "Shift" }, "k", function() awful.client.swap.byidx(-1) end),
+    awful.key({ modkey, "Shift"   }, "j", function() awful.client.swap.byidx(1) end),
+    awful.key({ modkey, "Shift"   }, "k", function() awful.client.swap.byidx(-1) end),
+    awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
     -- layouts
     awful.key({ modkey          }, "space", function() awful.layout.inc(layouts, 1) end),
@@ -234,7 +230,7 @@ local globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "r",      awesome.restart),
     awful.key({ modkey, "Control" }, "q",      awesome.quit),
     awful.key({ modkey            }, "u",      awful.client.urgent.jumpto),
-    awful.key({ modkey            }, "Return", function() awful.util.spawn(terminal) end),
+    awful.key({ modkey            }, "Return", function() awful.spawn(terminal) end),
 
     -- media keys
     awful.key({ }, "XF86AudioRaiseVolume", function() awful.util.spawn("amixer set Master 2+") end),
@@ -254,14 +250,14 @@ awful.rules.rules = {
     {
         rule = {},
         properties = {
-            border_width = beautiful.border_width,
-            border_color = beautiful.border_color,
-            focus = awful.client.focus.filter,
-            raise = true,
-            keys = clientkeys,
-            buttons = clientbuttons,
+            border_width         = beautiful.border_width,
+            border_color         = beautiful.border_color,
+            focus                = awful.client.focus.filter,
+            raise                = true,
+            keys                 = clientkeys,
+            buttons              = clientbuttons,
             maximized_horizontal = false,
-            maximized_vertical = false
+            maximized_vertical   = false
         }
     }
 }
