@@ -2,24 +2,25 @@
 -- Default awesome theme --
 ---------------------------
 
-theme = {}
+local theme = {}
 
-theme.font          = "terminus 8"
+theme.font          = "sans 8"
 
 theme.bg_normal     = "#222222"
-theme.bg_focus      = "#C51162"
-theme.bg_urgent     = "#f44336"
+theme.bg_focus      = "#535d6c"
+theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#ffffff"
+theme.fg_normal     = "#aaaaaa"
 theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
-theme.border_width  = 0
+theme.useless_gap   = 0
+theme.border_width  = 1
 theme.border_normal = "#000000"
-theme.border_focus  = "#e91e63"
+theme.border_focus  = "#535d6c"
 theme.border_marked = "#91231c"
 
 -- There are other variable sets
@@ -53,6 +54,9 @@ theme.menu_width  = 100
 theme.titlebar_close_button_normal = "/usr/share/awesome/themes/default/titlebar/close_normal.png"
 theme.titlebar_close_button_focus  = "/usr/share/awesome/themes/default/titlebar/close_focus.png"
 
+theme.titlebar_minimize_button_normal = "/usr/share/awesome/themes/default/titlebar/minimize_normal.png"
+theme.titlebar_minimize_button_focus  = "/usr/share/awesome/themes/default/titlebar/minimize_focus.png"
+
 theme.titlebar_ontop_button_normal_inactive = "/usr/share/awesome/themes/default/titlebar/ontop_normal_inactive.png"
 theme.titlebar_ontop_button_focus_inactive  = "/usr/share/awesome/themes/default/titlebar/ontop_focus_inactive.png"
 theme.titlebar_ontop_button_normal_active = "/usr/share/awesome/themes/default/titlebar/ontop_normal_active.png"
@@ -73,6 +77,8 @@ theme.titlebar_maximized_button_focus_inactive  = "/usr/share/awesome/themes/def
 theme.titlebar_maximized_button_normal_active = "/usr/share/awesome/themes/default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = "/usr/share/awesome/themes/default/titlebar/maximized_focus_active.png"
 
+theme.wallpaper = "/usr/share/awesome/themes/default/background.png"
+
 -- You can use your own layout icons like this:
 theme.layout_fairh = "/usr/share/awesome/themes/default/layouts/fairhw.png"
 theme.layout_fairv = "/usr/share/awesome/themes/default/layouts/fairvw.png"
@@ -86,6 +92,10 @@ theme.layout_tile = "/usr/share/awesome/themes/default/layouts/tilew.png"
 theme.layout_tiletop = "/usr/share/awesome/themes/default/layouts/tiletopw.png"
 theme.layout_spiral  = "/usr/share/awesome/themes/default/layouts/spiralw.png"
 theme.layout_dwindle = "/usr/share/awesome/themes/default/layouts/dwindlew.png"
+theme.layout_cornernw = "/usr/share/awesome/themes/default/layouts/cornernww.png"
+theme.layout_cornerne = "/usr/share/awesome/themes/default/layouts/cornernew.png"
+theme.layout_cornersw = "/usr/share/awesome/themes/default/layouts/cornersww.png"
+theme.layout_cornerse = "/usr/share/awesome/themes/default/layouts/cornersew.png"
 
 theme.awesome_icon = "/usr/share/awesome/icons/awesome16.png"
 
@@ -93,51 +103,6 @@ theme.awesome_icon = "/usr/share/awesome/icons/awesome16.png"
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
 
-
-
--- Start of customizations --
-
--- Override layout icons
-theme.layout_tile = "/home/arnelle/.config/awesome/arnelle/theme/icons/layout-tile.png"
-theme.layout_tileleft = "/home/arnelle/.config/awesome/arnelle/theme/icons/layout-tileleft.png"
-theme.layout_tiletop = "/home/arnelle/.config/awesome/arnelle/theme/icons/layout-tiletop.png"
-theme.layout_tilebottom = "/home/arnelle/.config/awesome/arnelle/theme/icons/layout-tilebottom.png"
-theme.layout_magnifier = "/home/arnelle/.config/awesome/arnelle/theme/icons/layout-magnifier.png"
-theme.layout_fullscreen = "/home/arnelle/.config/awesome/arnelle/theme/icons/layout-fullscreen.png"
-theme.layout_floating  = "/home/arnelle/.config/awesome/arnelle/theme/icons/layout-floating.png"
-
--- Override taglist icons
-theme.taglist_squares_sel = "/home/arnelle/.config/awesome/arnelle/theme/icons/square.png"
-theme.taglist_squares_unsel = "/home/arnelle/.config/awesome/arnelle/theme/icons/square.png"
-
-theme.naughty_fg = "#222222"
-theme.naughty_bg = "#FFF9C4"
-
-
--- Custom-defined variables
-
--- volume widget
-theme.volume_on_color = "#7986cb"
-theme.volume_off_color = "#e57373"
-theme.volume_on_icon = "/home/arnelle/.config/awesome/arnelle/theme/icons/volume-on.png"
-theme.volume_off_icon = "/home/arnelle/.config/awesome/arnelle/theme/icons/volume-off.png"
-
--- ipaddress widget
-theme.ipaddress_color = "#81c784"
-theme.ipaddress_icon = "/home/arnelle/.config/awesome/arnelle/theme/icons/ipaddress.png"
-
--- datetime widget
-theme.date_color = "#f06292"
-theme.time_color = "#64b5f6"
-theme.datetime_icon = "/home/arnelle/.config/awesome/arnelle/theme/icons/datetime.png"
-
--- song widget
-theme.song_color = "#fff59d"
-theme.song_icon = "/home/arnelle/.config/awesome/arnelle/theme/icons/song.png"
-
--- shutdown widget
-theme.shutdown_icon = "/home/arnelle/.config/awesome/arnelle/theme/icons/shutdown.png"
-
-
 return theme
+
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
