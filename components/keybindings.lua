@@ -16,10 +16,4 @@ return awful.util.table.join(
     awful.key({ config.modkey, "Control" }, "r",      awesome.restart),
     awful.key({ config.modkey, "Control" }, "q",      awesome.quit),
     awful.key({ config.modkey            }, "u",      awful.client.urgent.jumpto),
-    awful.key({ config.modkey            }, "Return", function() awful.spawn(config.terminal) end),
-
-    -- media keys
-    awful.key({ }, "XF86AudioPlay",        function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") end),
-    awful.key({ }, "XF86AudioNext",        function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") end),
-    awful.key({ }, "XF86AudioPrev",        function() awful.util.spawn("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") end)
-)
+    awful.key({ config.modkey            }, "Return", function() awful.spawn(config.terminal) end))

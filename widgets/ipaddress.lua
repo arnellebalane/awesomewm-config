@@ -31,7 +31,7 @@ local layout  = wibox.widget({
 local margin  = wibox.container.margin(layout, 6, 16, 0, 0)
 
 local background_shape = function(cr, w, h) gears.shape.powerline(cr, w, h, -11) end
-local background       = wibox.container.background(margin, beautiful.colors.dark_green, background_shape)
+local background       = wibox.container.background(margin, beautiful.colors.dark_cyan, background_shape)
 local widget           = wibox.container.margin(background, 0, -11, 0, 0)
 
 return widget

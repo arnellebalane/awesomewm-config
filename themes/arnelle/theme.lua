@@ -22,6 +22,7 @@ theme.icons = {
     clock     = "/home/arnelle/.config/awesome/themes/arnelle/icons/clock.png",
     ipaddress = "/home/arnelle/.config/awesome/themes/arnelle/icons/ipaddress.png",
     volume    = "/home/arnelle/.config/awesome/themes/arnelle/icons/volume.png",
+    spotify   = "/home/arnelle/.config/awesome/themes/arnelle/icons/note.png",
 }
 
 theme.font          = "terminus 8"

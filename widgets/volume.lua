@@ -33,7 +33,6 @@ function display_volume()
         textbox:set_markup("<span fgcolor='" .. beautiful.colors.white .. "'>MUTE</span>")
     end
 
-
     return true
 end
 
@@ -56,5 +55,6 @@ widget.globalkeys = awful.util.table.join(
     awful.key({ }, "XF86AudioRaiseVolume", raise_volume),
     awful.key({ }, "XF86AudioLowerVolume", lower_volume),
     awful.key({ }, "XF86AudioMute",        mute))
+
 
 return widget

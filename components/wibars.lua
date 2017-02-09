@@ -5,6 +5,7 @@ local wibox   = require("wibox")
 local layouts = require("components/layouts")
 local tags    = require("components/tags")
 
+local spotify   = require("widgets/spotify")
 local volume    = require("widgets/volume")
 local ipaddress = require("widgets/ipaddress")
 local datetime  = require("widgets/datetime")
@@ -34,6 +35,7 @@ awful.screen.connect_for_each_screen(function(s)
         nil,
         {
             layout = wibox.layout.fixed.horizontal,
+            spotify,
             volume,
             ipaddress,
             datetime,
@@ -43,6 +45,9 @@ awful.screen.connect_for_each_screen(function(s)
 end)
 
 
-return {
-    globalkeys = awful.util.table.join(volume.globalkeys),
-}
+local component      = {}
+component.globalkeys = awful.util.table.join(
+    spotify.globalkeys,
+    volume.globalkeys)
+
+return component
