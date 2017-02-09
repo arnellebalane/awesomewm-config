@@ -1,3 +1,5 @@
+local theme_path = "/home/arnelle/.config/awesome/themes/arnelle/"
+
 local theme  = {}
 theme.colors = {
     black         = "#1D1F21",
@@ -20,23 +22,23 @@ theme.colors = {
 
 theme.widgets = {
     poweroff  = {
-        icon  = "/home/arnelle/.config/awesome/themes/arnelle/icons/awesome.png",
+        icon  = theme_path .. "icons/awesome.png",
         color = theme.colors.dark_red,
     },
     datetime  = {
-        icon  = "/home/arnelle/.config/awesome/themes/arnelle/icons/clock.png",
+        icon  = theme_path .. "icons/clock.png",
         color = theme.colors.dark_teal,
     },
     ipaddress = {
-        icon  = "/home/arnelle/.config/awesome/themes/arnelle/icons/ipaddress.png",
+        icon  = theme_path .. "icons/ipaddress.png",
         color = theme.colors.dark_magenta,
     },
     volume    = {
-        icon  = "/home/arnelle/.config/awesome/themes/arnelle/icons/volume.png",
+        icon  = theme_path .. "icons/volume.png",
         color = theme.colors.dark_cyan,
     },
     spotify   = {
-        icon  = "/home/arnelle/.config/awesome/themes/arnelle/icons/note.png",
+        icon  = theme_path .. "icons/note.png",
         color = theme.colors.dark_green,
     },
 }
@@ -55,22 +57,11 @@ theme.fg_minimize   = theme.colors.white
 theme.useless_gap   = 0
 
 -- layout icons
-theme.layout_fairh      = "/usr/share/awesome/themes/default/layouts/fairhw.png"
-theme.layout_fairv      = "/usr/share/awesome/themes/default/layouts/fairvw.png"
-theme.layout_floating   = "/usr/share/awesome/themes/default/layouts/floatingw.png"
-theme.layout_magnifier  = "/usr/share/awesome/themes/default/layouts/magnifierw.png"
-theme.layout_max        = "/usr/share/awesome/themes/default/layouts/maxw.png"
-theme.layout_fullscreen = "/usr/share/awesome/themes/default/layouts/fullscreenw.png"
-theme.layout_tilebottom = "/usr/share/awesome/themes/default/layouts/tilebottomw.png"
-theme.layout_tileleft   = "/usr/share/awesome/themes/default/layouts/tileleftw.png"
-theme.layout_tile       = "/usr/share/awesome/themes/default/layouts/tilew.png"
-theme.layout_tiletop    = "/usr/share/awesome/themes/default/layouts/tiletopw.png"
-theme.layout_spiral     = "/usr/share/awesome/themes/default/layouts/spiralw.png"
-theme.layout_dwindle    = "/usr/share/awesome/themes/default/layouts/dwindlew.png"
-theme.layout_cornernw   = "/usr/share/awesome/themes/default/layouts/cornernww.png"
-theme.layout_cornerne   = "/usr/share/awesome/themes/default/layouts/cornernew.png"
-theme.layout_cornersw   = "/usr/share/awesome/themes/default/layouts/cornersww.png"
-theme.layout_cornerse   = "/usr/share/awesome/themes/default/layouts/cornersew.png"
+theme.layout_tile       = theme_path .. "icons/layouts/tile-right.png"
+theme.layout_tileleft   = theme_path .. "icons/layouts/tile-left.png"
+theme.layout_tiletop    = theme_path .. "icons/layouts/tile-top.png"
+theme.layout_tilebottom = theme_path .. "icons/layouts/tile-bottom.png"
+theme.layout_floating   = theme_path .. "icons/layouts/floating.png"
 
 
 return theme
