@@ -26,7 +26,7 @@ local icon    = wibox.widget.imagebox(beautiful.icons.ipaddress, false)
 local layout  = wibox.widget({
     layout = wibox.layout.align.horizontal,
     icon,
-    textbox
+    textbox,
 })
 local margin  = wibox.container.margin(layout, 6, 16, 0, 0)
 

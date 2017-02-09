@@ -5,6 +5,11 @@ local wibox   = require("wibox")
 local layouts = require("components/layouts")
 local tags    = require("components/tags")
 
+local volume    = require("widgets/volume")
+local ipaddress = require("widgets/ipaddress")
+local datetime  = require("widgets/datetime")
+local poweroff  = require("widgets/poweroff")
+
 
 awful.screen.connect_for_each_screen(function(s)
     s.promptbox = awful.widget.prompt({ prompt = "run: " })
@@ -29,9 +34,15 @@ awful.screen.connect_for_each_screen(function(s)
         nil,
         {
             layout = wibox.layout.fixed.horizontal,
-            require("widgets/ipaddress"),
-            require("widgets/datetime"),
-            require("widgets/poweroff"),
+            volume,
+            ipaddress,
+            datetime,
+            poweroff,
         }
     })
 end)
+
+
+return {
+    globalkeys = awful.util.table.join(volume.globalkeys),
+}
