@@ -17,7 +17,8 @@ awful.rules.rules = {
             keys                 = clients.keys,
             buttons              = clients.buttons,
             maximized_horizontal = false,
-            maximized_vertical   = false
+            maximized_vertical   = false,
+            size_hints_honor     = false,
         },
     },
     {
