@@ -17,12 +17,28 @@ theme.colors = {
     light_magenta = "#B294BB",
     light_teal    = "#8ABEB7",
 }
-theme.icons = {
-    awesome   = "/home/arnelle/.config/awesome/themes/arnelle/icons/awesome.png",
-    clock     = "/home/arnelle/.config/awesome/themes/arnelle/icons/clock.png",
-    ipaddress = "/home/arnelle/.config/awesome/themes/arnelle/icons/ipaddress.png",
-    volume    = "/home/arnelle/.config/awesome/themes/arnelle/icons/volume.png",
-    spotify   = "/home/arnelle/.config/awesome/themes/arnelle/icons/note.png",
+
+theme.widgets = {
+    poweroff  = {
+        icon  = "/home/arnelle/.config/awesome/themes/arnelle/icons/awesome.png",
+        color = theme.colors.dark_red,
+    },
+    datetime  = {
+        icon  = "/home/arnelle/.config/awesome/themes/arnelle/icons/clock.png",
+        color = theme.colors.dark_teal,
+    },
+    ipaddress = {
+        icon  = "/home/arnelle/.config/awesome/themes/arnelle/icons/ipaddress.png",
+        color = theme.colors.dark_magenta,
+    },
+    volume    = {
+        icon  = "/home/arnelle/.config/awesome/themes/arnelle/icons/volume.png",
+        color = theme.colors.dark_cyan,
+    },
+    spotify   = {
+        icon  = "/home/arnelle/.config/awesome/themes/arnelle/icons/note.png",
+        color = theme.colors.dark_green,
+    },
 }
 
 theme.font          = "terminus 8"

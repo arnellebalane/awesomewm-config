@@ -5,7 +5,7 @@ local beautiful = require("beautiful")
 local config    = require("components/config")
 
 
-local icon    = wibox.widget.imagebox(beautiful.icons.volume, false)
+local icon    = wibox.widget.imagebox(beautiful.widgets.volume.icon, false)
 local textbox = wibox.widget.textbox("<span fgcolor='" .. beautiful.colors.white .. "'>0%</span>")
 local layout  = wibox.widget({
     layout = wibox.layout.align.horizontal,
@@ -15,7 +15,7 @@ local layout  = wibox.widget({
 local margin  = wibox.container.margin(layout, 6, 16, 0, 0)
 
 local background_shape = function(cr, w, h) gears.shape.powerline(cr, w, h, -11) end
-local background       = wibox.container.background(margin, beautiful.colors.dark_magenta, background_shape)
+local background       = wibox.container.background(margin, beautiful.widgets.volume.color, background_shape)
 local widget           = wibox.container.margin(background, 0, -11, 0, 0)
 
 
