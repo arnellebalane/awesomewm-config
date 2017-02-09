@@ -1,5 +1,7 @@
 -- Theme Initialization
 
+local awful     = require("awful")
+local gears     = require("gears")
 local beautiful = require("beautiful")
 local config    = require("components/config")
 
@@ -10,7 +12,7 @@ beautiful.init(theme_path)
 
 
 -- Display wallpaper on each screen
-screen.connect_signal("property::geometry", function(s)
+function display_wallpaper(s)
     if beautiful.wallpaper then
         local wallpaper = beautiful.wallpaper;
         if type(wallpaper) == "function" then
@@ -20,4 +22,7 @@ screen.connect_signal("property::geometry", function(s)
     else
         gears.wallpaper.set("#263238")
     end
-end)
+end
+
+awful.screen.connect_for_each_screen(display_wallpaper)
+screen.connect_signal("property::geometry", display_wallpaper)
