@@ -18,7 +18,8 @@ theme.colors = {
     light_teal    = "#8ABEB7",
 }
 theme.icons = {
-    clock = "/home/arnelle/.config/awesome/themes/arnelle/icons/clock.png",
+    awesome = "/home/arnelle/.config/awesome/themes/arnelle/icons/awesome.png",
+    clock   = "/home/arnelle/.config/awesome/themes/arnelle/icons/clock.png",
 }
 
 theme.font          = "terminus 8"
