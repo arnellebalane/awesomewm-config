@@ -17,12 +17,12 @@ tags.buttons = awful.util.table.join(
     awful.button({ config.modkey, "Shift" }, 1, function(t)
         if client.focus then
             client.focus:move_to_tag(t)
-            tag:view_only()
+            t:view_only()
         end
     end),
     awful.button({ }, 3, awful.tag.viewtoggle),
-    awful.button({ }, 4, function(t) awful.tag.viewprev(tag.screen) end),
-    awful.button({ }, 5, function(t) awful.tag.viewnext(tag.screen) end))
+    awful.button({ }, 4, function(t) awful.tag.viewprev(t.screen) end),
+    awful.button({ }, 5, function(t) awful.tag.viewnext(t.screen) end))
 
 
 tags.globalkeys = awful.util.table.join(
@@ -58,7 +58,7 @@ end
 
 tags.widget = function(s)
     local taglist_filter = awful.widget.taglist.filter.all
-    return awful.widget.taglist(s, taglist_filter, tags.button)
+    return awful.widget.taglist(s, taglist_filter, tags.buttons)
 end
 
 
