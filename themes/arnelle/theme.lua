@@ -17,6 +17,9 @@ theme.colors = {
     light_magenta = "#B294BB",
     light_teal    = "#8ABEB7",
 }
+theme.icons = {
+    clock = "/home/arnelle/.config/awesome/themes/arnelle/icons/clock.png",
+}
 
 theme.font          = "terminus 8"
 
@@ -48,5 +51,6 @@ theme.layout_cornernw   = "/usr/share/awesome/themes/default/layouts/cornernww.p
 theme.layout_cornerne   = "/usr/share/awesome/themes/default/layouts/cornernew.png"
 theme.layout_cornersw   = "/usr/share/awesome/themes/default/layouts/cornersww.png"
 theme.layout_cornerse   = "/usr/share/awesome/themes/default/layouts/cornersew.png"
+
 
 return theme

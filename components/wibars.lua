@@ -26,5 +26,10 @@ awful.screen.connect_for_each_screen(function(s)
             tags.widget(s),
             s.promptbox,
         },
+        nil,
+        {
+            layout = wibox.layout.fixed.horizontal,
+            require("widgets/datetime"),
+        }
     })
 end)
