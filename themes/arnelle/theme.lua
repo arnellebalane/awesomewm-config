@@ -1,7 +1,7 @@
 local theme  = {}
 theme.colors = {
     black         = "#1D1F21",
-    white         = "#C5C8C6",
+    white         = "#FFFFFF",
     dark_gray     = "#282A2E",
     dark_red      = "#A54242",
     dark_green    = "#8C9440",
@@ -18,8 +18,9 @@ theme.colors = {
     light_teal    = "#8ABEB7",
 }
 theme.icons = {
-    awesome = "/home/arnelle/.config/awesome/themes/arnelle/icons/awesome.png",
-    clock   = "/home/arnelle/.config/awesome/themes/arnelle/icons/clock.png",
+    awesome   = "/home/arnelle/.config/awesome/themes/arnelle/icons/awesome.png",
+    clock     = "/home/arnelle/.config/awesome/themes/arnelle/icons/clock.png",
+    ipaddress = "/home/arnelle/.config/awesome/themes/arnelle/icons/ipaddress.png",
 }
 
 theme.font          = "terminus 8"

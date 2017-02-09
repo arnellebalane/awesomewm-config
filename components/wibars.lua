@@ -29,6 +29,7 @@ awful.screen.connect_for_each_screen(function(s)
         nil,
         {
             layout = wibox.layout.fixed.horizontal,
+            require("widgets/ipaddress"),
             require("widgets/datetime"),
             require("widgets/poweroff"),
         }
