@@ -16,4 +16,15 @@ return awful.util.table.join(
     awful.key({ config.modkey, "Control" }, "r",      awesome.restart),
     awful.key({ config.modkey, "Control" }, "q",      awesome.quit),
     awful.key({ config.modkey            }, "u",      awful.client.urgent.jumpto),
-    awful.key({ config.modkey            }, "Return", function() awful.spawn(config.terminal) end))
+    awful.key({ config.modkey            }, "Return", function() awful.spawn(config.terminal) end),
+
+    -- screenshot (requires `scrot`)
+    awful.key({         }, "Print", function()
+        local output_path = "/home/arnelle/Pictures/screenshots/" .. os.date("%Y-%m-%d-%H%M%S" .. ".jpg")
+        awful.spawn.with_shell("sleep 0.5 && scrot " .. output_path)
+    end),
+    awful.key({ "Shift" }, "Print", function()
+        local output_path = "/home/arnelle/Pictures/screenshots/" .. os.date("%Y-%m-%d-%H%M%S" .. ".jpg")
+        awful.spawn.with_shell("sleep 0.5 && scrot -s " .. output_path)
+    end)
+)
