@@ -20,6 +20,12 @@ theme.colors = {
     light_teal    = "#8ABEB7",
 }
 
+theme.icons = {
+    number_1 = theme_path .. "icons/number-1.png",
+    number_2 = theme_path .. "icons/number-2.png",
+    number_3 = theme_path .. "icons/number-3.png",
+}
+
 theme.widgets = {
     poweroff  = {
         icon  = theme_path .. "icons/awesome.png",
