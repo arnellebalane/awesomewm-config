@@ -2,7 +2,7 @@
 
 local config    = {}
 config.theme    = "arnelle"
-config.terminal = "terminator"
+config.terminal = "/home/arnelle/bin/hyper"
 config.modkey   = "Mod4"
 config.altkey   = "Mod1"
 
