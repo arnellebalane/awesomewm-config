@@ -1,15 +1,23 @@
 -- Tags Component
 
-local awful   = require("awful")
-local wibox   = require("wibox")
-local gears   = require("gears")
-local config  = require("components/config")
-local layouts = require("components/layouts")
+local awful     = require("awful")
+local wibox     = require("wibox")
+local gears     = require("gears")
+local beautiful = require("beautiful")
+local config    = require("components/config")
+local layouts   = require("components/layouts")
 
 
 local tags = {}
-tags[1] = awful.tag({ "code", "terminal" }, 1, layouts[1])
-tags[2] = awful.tag({ "www", "chat", "music", "files" }, 2, layouts[1])
+tags[1] = awful.tag({ "", "" }, 1, layouts[1])
+tags[2] = awful.tag({ "", "", "", "" }, 2, layouts[1])
+
+awful.tag.seticon(beautiful.theme_path .. "icons/code.png", tags[1][1])
+awful.tag.seticon(beautiful.theme_path .. "icons/terminal.png", tags[1][2])
+awful.tag.seticon(beautiful.theme_path .. "icons/www.png", tags[2][1])
+awful.tag.seticon(beautiful.theme_path .. "icons/chat.png", tags[2][2])
+awful.tag.seticon(beautiful.theme_path .. "icons/music.png", tags[2][3])
+awful.tag.seticon(beautiful.theme_path .. "icons/files.png", tags[2][4])
 
 
 tags.buttons = awful.util.table.join(
@@ -58,7 +66,9 @@ end
 
 tags.widget = function(s)
     local taglist_filter = awful.widget.taglist.filter.all
-    return awful.widget.taglist(s, taglist_filter, tags.buttons)
+    local taglist = awful.widget.taglist(s, taglist_filter, tags.buttons)
+    local background = wibox.container.background(taglist, beautiful.colors.light_gray)
+    return background
 end
 
 

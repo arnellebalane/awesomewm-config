@@ -22,7 +22,6 @@ awful.screen.connect_for_each_screen(function(s)
         screen   = s,
         position = "bottom",
         height   = 22,
-        ontop    = true
     })
     s.wibox:setup({
         layout = wibox.layout.align.horizontal,
