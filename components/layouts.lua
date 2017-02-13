@@ -1,7 +1,9 @@
 -- Layouts Configuration
 
-local awful  = require("awful")
-local config = require("components/config")
+local awful     = require("awful")
+local wibox     = require("wibox")
+local beautiful = require("beautiful")
+local config    = require("components/config")
 
 
 local layouts = {
@@ -25,6 +27,14 @@ layouts.globalkeys = awful.util.table.join(
     awful.key({ config.modkey, "Shift" }, "space", function() awful.layout.inc(layouts, -1) end),
     awful.key({ config.modkey          }, "l",     function() awful.tag.incmwfact(0.05) end),
     awful.key({ config.modkey          }, "h",     function() awful.tag.incmwfact(-0.05) end))
+
+
+layouts.widget = function(s)
+    local layoutbox = awful.widget.layoutbox(s)
+    layoutbox:buttons(layouts.buttons)
+    local background = wibox.container.background(layoutbox, beautiful.colors.dark_gray)
+    return background
+end
 
 
 return layouts

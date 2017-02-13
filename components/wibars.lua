@@ -15,9 +15,6 @@ local poweroff  = require("widgets/poweroff")
 awful.screen.connect_for_each_screen(function(s)
     s.promptbox = awful.widget.prompt({ prompt = "run: " })
 
-    s.layoutbox = awful.widget.layoutbox(s)
-    s.layoutbox:buttons(layouts.buttons)
-
     s.wibox = awful.wibar({
         screen   = s,
         position = "bottom",
@@ -27,7 +24,7 @@ awful.screen.connect_for_each_screen(function(s)
         layout = wibox.layout.align.horizontal,
         {
             layout = wibox.layout.fixed.horizontal,
-            s.layoutbox,
+            layouts.widget(s),
             tags.widget(s),
             s.promptbox,
         },
