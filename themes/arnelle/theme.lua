@@ -1,6 +1,8 @@
 local theme_path = "/home/arnelle/.config/awesome/themes/arnelle/"
 
-local theme  = {}
+local theme      = {}
+theme.theme_path = theme_path
+
 theme.colors = {
     black         = "#1D1F21",
     white         = "#FFFFFF",
@@ -51,7 +53,7 @@ theme.widgets = {
 
 theme.font          = "terminus 8"
 
-theme.bg_normal     = theme.colors.dark_gray
+theme.bg_normal     = "transparent"
 theme.bg_focus      = theme.colors.dark_red
 theme.bg_urgent     = theme.colors.dark_yellow
 
@@ -61,7 +63,6 @@ theme.fg_urgent     = theme.colors.black
 theme.fg_minimize   = theme.colors.white
 
 theme.wallpaper     = theme_path .. "wallpaper.png"
-
 theme.useless_gap   = 5
 
 -- layout icons
