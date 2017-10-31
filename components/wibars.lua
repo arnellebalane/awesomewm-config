@@ -4,6 +4,7 @@ local awful   = require("awful")
 local wibox   = require("wibox")
 local layouts = require("components/layouts")
 local tags    = require("components/tags")
+local config  = require("components/config")
 
 local spotify   = require("widgets/spotify")
 local volume    = require("widgets/volume")
@@ -41,9 +42,17 @@ awful.screen.connect_for_each_screen(function(s)
 end)
 
 
+function toggle_wibar()
+    local s = awful.screen.focused()
+    s.wibox.visible = not s.wibox.visible
+end
+
+
 local component      = {}
 component.globalkeys = awful.util.table.join(
     spotify.globalkeys,
-    volume.globalkeys)
+    volume.globalkeys,
+
+    awful.key({ config.modkey }, 'w', toggle_wibar))
 
 return component
