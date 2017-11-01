@@ -9,11 +9,13 @@ local layouts   = require("components/layouts")
 
 
 local tags = {}
-tags[1] = awful.tag({ "", "" }, 1, layouts[1])
+tags[1] = awful.tag({ "", "", "", "" }, 1, layouts[1])
 tags[2] = awful.tag({ "", "", "", "" }, 2, layouts[1])
 
 awful.tag.seticon(beautiful.theme_path .. "icons/code.png", tags[1][1])
 awful.tag.seticon(beautiful.theme_path .. "icons/terminal.png", tags[1][2])
+awful.tag.seticon(beautiful.theme_path .. "icons/code.png", tags[1][3])
+awful.tag.seticon(beautiful.theme_path .. "icons/code.png", tags[1][4])
 awful.tag.seticon(beautiful.theme_path .. "icons/www.png", tags[2][1])
 awful.tag.seticon(beautiful.theme_path .. "icons/chat.png", tags[2][2])
 awful.tag.seticon(beautiful.theme_path .. "icons/music.png", tags[2][3])
