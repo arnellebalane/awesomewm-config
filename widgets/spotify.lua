@@ -63,7 +63,10 @@ gears.timer.start_new(0.5, display_song)
 
 
 widget:buttons(awful.util.table.join(
-    awful.button({ config.modkey }, 1, open_spotify)))
+    awful.button({ config.modkey }, 1, open_spotify),
+    awful.button({ config.modkey }, 3, toggle_song),
+    awful.button({ config.modkey }, 4, previous_song),
+    awful.button({ config.modkey }, 5, next_song)))
 
 
 widget.globalkeys = awful.util.table.join(
