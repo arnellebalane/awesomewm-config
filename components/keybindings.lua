@@ -29,5 +29,13 @@ return awful.util.table.join(
     end),
 
     -- screen lock (requires `xtrlock`)
-    awful.key({ config.modkey            }, "F12",    function() awful.spawn("xtrlock") end)
+    awful.key({ config.modkey            }, "F12",    function() awful.spawn("xtrlock") end),
+
+    -- spawn dev environment
+    awful.key({ config.modkey, "Control" }, "d",      function()
+        awful.spawn("subl")
+        awful.spawn(config.terminal)
+        awful.spawn("google-chrome")
+        awful.spawn("rambox")
+    end)
 )
