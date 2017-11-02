@@ -63,7 +63,7 @@ theme.fg_urgent     = theme.colors.black
 theme.fg_minimize   = theme.colors.white
 
 theme.wallpaper     = theme_path .. "wallpaper.png"
-theme.useless_gap   = 5
+theme.useless_gap   = 0
 
 -- layout icons
 theme.layout_tile       = theme_path .. "icons/layouts/tile-right.png"
