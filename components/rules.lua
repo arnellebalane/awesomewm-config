@@ -29,6 +29,13 @@ awful.rules.rules = {
         },
     },
     {
+        rule       = { class = "Sublime_text" },
+        properties = {
+            tag         = tags[1][1],
+            switchtotag = true,
+        },
+    },
+    {
         rule       = { class = "Terminator" },
         properties = {
             tag         = tags[1][2],
@@ -43,7 +50,7 @@ awful.rules.rules = {
         },
     },
     {
-        rule       = { class = "Franz" },
+        rule       = { class = "Rambox" },
         properties = {
             tag         = tags[1][4],
             switchtotag = true,
@@ -62,5 +69,12 @@ awful.rules.rules = {
             tag         = tags[1][4],
             switchtotag = true,
         },
-    }
+    },
+    {
+        rule       = { class = "Spotify" },
+        properties = {
+            tag         = tags[1][4],
+            switchtotag = true,
+        }
+    },
 }
