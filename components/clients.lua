@@ -46,6 +46,8 @@ clients.globalkeys = awful.util.table.join(
 
 
 client.connect_signal("manage", function(c, startup)
+    awful.client.setslave(c)
+
     c:connect_signal("mouse::enter", function(c)
         if awful.client.focus.filter(c) then
             client.focus = c
