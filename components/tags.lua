@@ -1,6 +1,7 @@
 -- Tags Component
 
 local awful     = require("awful")
+local screen    = require("screen")
 local wibox     = require("wibox")
 local gears     = require("gears")
 local beautiful = require("beautiful")
@@ -9,17 +10,28 @@ local layouts   = require("components/layouts")
 
 
 local tags = {}
-tags[1] = awful.tag({ "", "", "", "" }, 1, layouts[1])
-tags[2] = awful.tag({ "", "", "", "" }, 2, layouts[1])
+local screen_count = screen:count()
 
-awful.tag.seticon(beautiful.theme_path .. "icons/code.png", tags[1][1])
-awful.tag.seticon(beautiful.theme_path .. "icons/terminal.png", tags[1][2])
-awful.tag.seticon(beautiful.theme_path .. "icons/code.png", tags[1][3])
-awful.tag.seticon(beautiful.theme_path .. "icons/code.png", tags[1][4])
-awful.tag.seticon(beautiful.theme_path .. "icons/www.png", tags[2][1])
-awful.tag.seticon(beautiful.theme_path .. "icons/chat.png", tags[2][2])
-awful.tag.seticon(beautiful.theme_path .. "icons/music.png", tags[2][3])
+if screen_count == 1 then
+    tags[1] = awful.tag({ "", "", "", "" }, 1, layouts[1])
+
+    awful.tag.seticon(beautiful.theme_path .. "icons/code.png", tags[1][1])
+    awful.tag.seticon(beautiful.theme_path .. "icons/terminal.png", tags[1][2])
+    awful.tag.seticon(beautiful.theme_path .. "icons/www.png", tags[1][3])
+    awful.tag.seticon(beautiful.theme_path .. "icons/chat.png", tags[1][4])
+elseif screen_count == 2 then
+    tags[1] = awful.tag({ "", "", "", "" }, 1, layouts[1])
+    tags[2] = awful.tag({ "", "", "", "" }, 2, layouts[1])
+
+    awful.tag.seticon(beautiful.theme_path .. "icons/code.png", tags[1][1])
+    awful.tag.seticon(beautiful.theme_path .. "icons/terminal.png", tags[1][2])
+    awful.tag.seticon(beautiful.theme_path .. "icons/code.png", tags[1][3])
+    awful.tag.seticon(beautiful.theme_path .. "icons/code.png", tags[1][4])
+    awful.tag.seticon(beautiful.theme_path .. "icons/www.png", tags[2][1])
+    awful.tag.seticon(beautiful.theme_path .. "icons/chat.png", tags[2][2])
+    awful.tag.seticon(beautiful.theme_path .. "icons/music.png", tags[2][3])
 awful.tag.seticon(beautiful.theme_path .. "icons/files.png", tags[2][4])
+end
 
 
 tags.buttons = awful.util.table.join(

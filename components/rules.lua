@@ -45,21 +45,21 @@ awful.rules.rules = {
     {
         rule       = { class = "Franz" },
         properties = {
-            tag         = tags[2][2],
+            tag         = tags[1][4],
             switchtotag = true,
         },
     },
     {
         rule       = { class = "Google-chrome" },
         properties = {
-            tag         = tags[2][1],
+            tag         = tags[1][3],
             switchtotag = true,
         },
     },
     {
         rule       = { class = "Nautilus" },
         properties = {
-            tag         = tags[2][4],
+            tag         = tags[1][4],
             switchtotag = true,
         },
     }
