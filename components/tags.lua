@@ -29,7 +29,7 @@ elseif screen_count == 2 then
     awful.tag.seticon(beautiful.theme_path .. "icons/www.png", tags[2][1])
     awful.tag.seticon(beautiful.theme_path .. "icons/chat.png", tags[2][2])
     awful.tag.seticon(beautiful.theme_path .. "icons/music.png", tags[2][3])
-awful.tag.seticon(beautiful.theme_path .. "icons/files.png", tags[2][4])
+    awful.tag.seticon(beautiful.theme_path .. "icons/files.png", tags[2][4])
 end
 
 
