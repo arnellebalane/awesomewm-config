@@ -41,7 +41,9 @@ clients.globalkeys = awful.util.table.join(
     end),
     awful.key({ config.modkey, "Shift"   }, "j", function() awful.client.swap.byidx(1) end),
     awful.key({ config.modkey, "Shift"   }, "k", function() awful.client.swap.byidx(-1) end),
-    awful.key({ config.modkey, "Control" }, "n", awful.client.restore))
+    awful.key({ config.modkey, "Control" }, "n", awful.client.restore),
+    awful.key({ config.modkey, "Shift"   }, "l", function() awful.client.incwfact(0.1) end),
+    awful.key({ config.modkey, "Shift"   }, "h", function() awful.client.incwfact(-0.1) end))
 
 
 client.connect_signal("manage", function(c, startup)
