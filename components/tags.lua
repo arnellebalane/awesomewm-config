@@ -1,7 +1,6 @@
 -- Tags Component
 
 local awful     = require("awful")
-local screen    = require("screen")
 local wibox     = require("wibox")
 local gears     = require("gears")
 local beautiful = require("beautiful")
