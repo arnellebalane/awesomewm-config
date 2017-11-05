@@ -22,8 +22,7 @@ clients.keys = awful.util.table.join(
     awful.key({ config.modkey }, "o", function(c) c:move_to_screen() end),
     awful.key({ config.modkey }, "n", function(c) c.minimized = true end),
     awful.key({ config.modkey }, "m", function(c)
-        c.maximized_horizontal = not c.maximized_horizontal
-        c.maximized_vertical   = not c.maximized_vertical
+        c.maximized = not c.maximized
     end))
 
 
