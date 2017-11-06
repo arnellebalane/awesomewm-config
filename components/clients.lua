@@ -21,9 +21,8 @@ clients.keys = awful.util.table.join(
     awful.key({ config.modkey }, "q", function(c) c:kill() end),
     awful.key({ config.modkey }, "o", function(c) c:move_to_screen() end),
     awful.key({ config.modkey }, "n", function(c) c.minimized = true end),
-    awful.key({ config.modkey }, "m", function(c)
-        c.maximized = not c.maximized
-    end))
+    awful.key({ config.modkey }, "m", function(c) c.maximized = not c.maximized end),
+    awful.key({ config.modkey }, "s", function(c) c.sticky = not c.sticky end))
 
 
 clients.globalkeys = awful.util.table.join(
