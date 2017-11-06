@@ -53,7 +53,9 @@ tags.globalkeys = awful.util.table.join(
     awful.key({ config.modkey, "Control" }, "l",      awful.tag.viewnext),
     awful.key({ config.modkey            }, "Escape", awful.tag.history.restore),
     awful.key({ config.modkey            }, "=",      function() awful.tag.incnmaster(1) end),
-    awful.key({ config.modkey            }, "-",      function() awful.tag.incnmaster(-1) end))
+    awful.key({ config.modkey            }, "-",      function() awful.tag.incnmaster(-1) end),
+    awful.key({ config.modkey, "Shift"   }, "=",      function() awful.tag.incgap(1) end),
+    awful.key({ config.modkey, "Shift"   }, "-",      function() awful.tag.incgap(-1) end))
 
 for i = 1, 5 do
     tags.globalkeys = awful.util.table.join(tags.globalkeys,
