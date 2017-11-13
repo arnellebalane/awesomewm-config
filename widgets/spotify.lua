@@ -72,7 +72,11 @@ widget:buttons(awful.util.table.join(
 widget.globalkeys = awful.util.table.join(
     awful.key({ }, "XF86AudioPlay", toggle_song),
     awful.key({ }, "XF86AudioNext", next_song),
-    awful.key({ }, "XF86AudioPrev", previous_song))
+    awful.key({ }, "XF86AudioPrev", previous_song),
+
+    awful.key({ config.modkey, "Control" }, "space", toggle_song),
+    awful.key({ config.modkey, "Control" }, "Right", next_song),
+    awful.key({ config.modkey, "Control" }, "Left", previous_song))
 
 
 return widget
